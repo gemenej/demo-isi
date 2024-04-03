@@ -1,0 +1,68 @@
+@import '../../../styles/variables';
+
+.users-list {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  background-color: $card-bg;
+
+  li {
+    position: relative;
+    cursor: pointer;
+  }
+
+  a {
+    color: $dark-text;
+    text-decoration: none;
+    display: block;
+    font-size: 1.2rem;
+    background-color: #F4F5F8;
+    margin: 1px 0;
+    padding: .5rem 0;
+
+    &:hover {
+      color: #2c3a41;
+      background-color: #EFF0F4;
+    }
+
+    &:active {
+      background-color: #EFF0F4;
+      color: #fafafa;
+    }
+  }
+
+  .selected a {
+    background-color: #EFF0F4;
+
+    &:hover {
+      background-color: #EFF0F4;
+    }
+  }
+
+  .users-list {
+    &__user-item {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      padding: 22px 26px;
+
+      div {
+        width: 22%;
+      }
+
+      .type {
+        width: 12%;
+      }
+    }
+  }
+
+  .badge {
+    padding: .5em .6em;
+    color: white;
+    background-color: #435b60;
+    min-width: 16px;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }
+}

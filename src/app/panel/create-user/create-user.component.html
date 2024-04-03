@@ -1,0 +1,225 @@
+<form
+    [formGroup]="userForm"
+    #form
+>
+    <div class="row card-body">
+
+        <div class="card-header">
+            {{ 'Create New User' }}
+            <button
+                class="close-btn"
+                (click)="closeCreateUser()"
+            >
+                <img
+                    src="assets/images/close-btn.svg"
+                    alt
+                    srcset
+                >
+            </button>
+        </div>
+
+        <div
+            class="col-12 form-group form-group"
+            appearance="outline"
+            [style.fontSize.px]="12"
+        >
+            <label>{{ 'Username' }} *</label>
+            <input
+                placeholder="{{ 'Name' }}"
+                formControlName="username"
+                class="text-input"
+            >
+            <span
+                *ngIf="userForm.controls['username'].touched && userForm.controls['username'].hasError('required')"
+                class="error-message"
+            >
+                {{ 'This field is required' }}
+            </span>
+            <span
+                *ngIf="userForm.controls['username'].touched && userForm.controls['username'].hasError('maxlength')"
+                class="error-message"
+            >
+                {{ 'The name is too long' }}
+            </span>
+            <span
+                *ngIf="userForm.controls['username'].touched && userForm.controls['username'].hasError('similar_name')"
+                class="error-message"
+            >
+                {{ 'Username is already exist' }}
+            </span>
+        </div>
+
+        <div
+            class="col-12 form-group"
+            appearance="outline"
+            [style.fontSize.px]="12"
+        >
+            <label>{{ 'First name' }} *</label>
+            <input
+                placeholder="{{ 'Name' }}"
+                formControlName="first_name"
+                class="text-input"
+            >
+            <span
+                *ngIf="userForm.controls['first_name'].touched && userForm.controls['first_name'].hasError('required')"
+                class="error-message"
+            >
+                {{ 'This field is required' }}
+            </span>
+            <span
+                *ngIf="userForm.controls['first_name'].touched && userForm.controls['first_name'].hasError('maxlength')"
+                class="error-message"
+            >
+                {{ 'The name is too long' }}
+            </span>
+        </div>
+
+        <div
+            class="col-12 form-group"
+            appearance="outline"
+            [style.fontSize.px]="12"
+        >
+            <label>{{ 'Last name' }} *</label>
+            <input
+                placeholder="{{ 'Name' }}"
+                formControlName="last_name"
+                class="text-input"
+            >
+            <span
+                *ngIf="userForm.controls['last_name'].touched && userForm.controls['last_name'].hasError('required')"
+                class="error-message"
+            >
+                {{ 'This field is required' }}
+            </span>
+            <span
+                *ngIf="userForm.controls['last_name'].touched && userForm.controls['last_name'].hasError('maxlength')"
+                class="error-message"
+            >
+                {{ 'The name is too long' }}
+            </span>
+        </div>
+
+        <div
+            class="col-12 form-group input-icons"
+            appearance="outline"
+            [style.fontSize.px]="12"
+        >
+            <label>{{ 'Email' }} *</label>
+            <i class="icon"></i>
+            <input
+                placeholder="{{ 'Email' }}"
+                formControlName="email"
+                class="text-input email-input"
+            >
+            <span
+                *ngIf="userForm.controls['email'].touched && userForm.controls['email'].hasError('required')"
+                class="error-message"
+            >
+                {{ 'This field is required' }}
+            </span>
+            <span
+                *ngIf="userForm.controls['email'].touched && userForm.controls['email'].hasError('pattern')"
+                class="error-message"
+            >
+                Please provide the correct e-mail
+            </span>
+        </div>
+
+        <div
+            class="col-12 form-group"
+            appearance="outline"
+            [style.fontSize.px]="12"
+        >
+            <label>{{ 'Type' }} *</label>
+            <select
+                formControlName="type"
+                class="select"
+            >
+                <option
+                    *ngFor="let role of rolesList$ | async"
+                    [value]="role.id"
+                >
+                    {{ role.type.replace('-', ' ') | titlecase }}
+                </option>
+            </select>
+            <span
+                *ngIf="userForm.controls['type'].touched && userForm.controls['type'].hasError('required')"
+                class="error-message"
+            >
+                {{ 'This field is required' }}
+            </span>
+        </div>
+
+        <div
+            class="col-6 password-field form-group"
+            appearance="outline"
+            [style.fontSize.px]="12"
+        >
+            <label>{{ 'Password' }} *</label>
+            <input
+                class="text-input"
+                type="password"
+                [type]="hidePassword ? 'password' : 'text'"
+                placeholder="{{ 'Password' }}"
+                formControlName="password"
+            >
+            <span
+                *ngIf="password.touched && password.hasError('required')"
+                class="error-message"
+            >
+                {{ 'This field is required' }}
+            </span>
+            <span
+                *ngIf="password.touched && password.hasError('pattern')"
+                class="error-message"
+            >
+                {{ 'Please provide min. 8 characters, at least one uppercase letter, and at least one number.' }}
+            </span>
+        </div>
+
+        <div
+            class="col-6 confirm-password-field form-group"
+            appearance="outline"
+            [style.fontSize.px]="12"
+        >
+            <label>{{ 'Confirm password' }} *</label>
+            <input
+                class="text-input"
+                type="password"
+                [type]="hidePassword ? 'password' : 'text'"
+                placeholder="{{ 'Confirm Password' }}"
+                formControlName="confirm_password"
+            >
+            <span
+                *ngIf="confirm_password.touched && confirm_password.hasError('required')"
+                class="error-message"
+            >
+                {{ 'This field is required' }}
+            </span>
+            <span
+                *ngIf="confirm_password.touched && confirm_password.hasError('pattern')"
+                class="error-message"
+            >
+                {{ 'Please provide min. 8 characters, at least one uppercase letter, and at least one number.' }}
+            </span>
+            <span
+                class="mandatory"
+                *ngIf="confirm_password.touched && userForm.hasError('passwordMismatch')"
+                class="error-message"
+            >
+                {{ 'Password does\'nt match.' }}
+            </span>
+        </div>
+
+        <div class="card-footer">
+            <button
+                color="accent"
+                class="text-capitalize button button-submit"
+                type="submit"
+                [disabled]="!userForm.valid"
+                (click)="submit()"
+                [innerText]="'Create'"
+            ></button>
+        </div>
+    </div>
+</form>

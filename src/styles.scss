@@ -1,0 +1,317 @@
+@import './styles/variables';
+
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  min-height: fit-content;
+}
+
+body {
+  min-height: fit-content;
+}
+
+body {
+  margin: 0;
+  padding: 120px 46px;
+  font: $font-text;
+  background-color: $body-bg;
+}
+
+.container {
+  max-width: 1210px;
+}
+
+a,
+button {
+  transition: 0.4s all ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.font-header {
+  font: $font-header !important;
+  color: $grey-text;
+}
+
+.font-title {
+  font: $font-title !important;
+
+}
+
+.font-input {
+  font: $font-input !important;
+}
+
+.font-table-row {
+  font: $font-table-row !important;
+}
+
+.font-text {
+  font: $font-text !important;
+}
+
+.toast-top-left {
+  top: 56px !important;
+  left: 46px !important;
+}
+
+.toast-top-right {
+  top: 56px !important;
+  right: 46px !important;
+}
+
+.ngx-toast-custom-error {
+  &.toast-error {
+    background-color: $error;
+    font: $font-text;
+    color: $white;
+    min-width: 280px;
+    padding: 22px 26px;
+    border-radius: 6px;
+    box-shadow: 0px 10px 15px #EF7DA05C;
+    z-index: 9999;
+    background-image: none;
+    cursor: pointer;
+
+    .toast-title {
+      font-weight: normal;
+    }
+  }
+}
+
+.ngx-toast-custom-success {
+  &.toast-success {
+    background-color: $green;
+    font: $font-text;
+    color: $white;
+    min-width: 280px;
+    max-width: 280px;
+    padding: 22px 26px;
+    border-radius: 6px;
+    box-shadow: 0px 10px 15px #4CAF505C;
+    z-index: 9999;
+    cursor: pointer;
+
+    .toast-title {
+      font-weight: normal;
+    }
+  }
+}
+
+.flex-container {
+  display: flex;
+  align-items: stretch;
+
+  .col-8 {
+    flex-grow: 8;
+    margin-right: 13px;
+
+    &.card {
+      box-shadow: $box-shadow;
+      background-color: $card-bg;
+      border-radius: 6px;
+
+      ul {
+        border-radius: 6px;
+      }
+    }
+  }
+
+  .col-1 {
+    flex-grow: 1;
+    min-width: 584px;
+    margin-left: 13px;
+
+    &.card {
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: 6px;
+
+      &.white-bg {
+        background-color: $card-bg;
+        box-shadow: $box-shadow;
+      }
+    }
+  }
+}
+
+.card-body {
+  background-color: $card-bg;
+  padding: 26px;
+  max-width: 532px;
+  border-radius: 6px;
+
+  label {
+    font: $font-label-input;
+    color: $dark-text;
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font: $font-title;
+  color: $primary;
+  margin-bottom: 25px;
+  &-right {
+    display: flex;
+    justify-content: end;
+  }
+
+  &-between {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.card-footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+
+  &-left {
+    display: flex;
+    justify-content: end;
+  }
+
+  &-between {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.form-group {
+  position: relative;
+}
+
+::placeholder {
+  opacity: 0.3;
+}
+
+.text-input,
+.select {
+  width: 100%;
+  padding: 12px 10px;
+  margin: 2px 0 16px 0;
+  display: inline-block;
+  box-sizing: border-box;
+
+  background-color: $grey-light;
+  border: 1px solid $grey-dark;
+  border-radius: 4px;
+  font: $font-input;
+  color: $dark-text;
+
+  &.ng-invalid {
+    &.ng-touched {
+      border: 1px solid $error;
+    }
+  }
+}
+
+.select {
+  display: inline-block;
+  height: 46px;
+  border: 1px solid $grey-light;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 12px 5px;
+  min-width: 40px;
+  top: 30px;
+  left: 0px;
+  background-image: url(/assets/images/email-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.text-input {
+  width: 100%;
+  padding: 10px;
+  height: 46px;
+  border: 1px solid $grey-light;
+
+  &.email-input {
+    padding-left: 40px;
+  }
+}
+
+.error-message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: $error;
+}
+
+.button {
+  padding: 14px 20px;
+  margin: 8px 0;
+  width: 120px;
+  color: white;
+  font: $font-button;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: $box-shadow-light;
+
+  &-submit {
+    background-color: $secondary;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &-action {
+    margin: 16px 0;
+    background-color: $secondary;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &-close {
+    background-color: $error;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.close-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

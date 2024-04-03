@@ -1,0 +1,61 @@
+<div class="flex-container">
+    <div class="col-8">
+        <div class="card-header-right">
+            <button
+                type="button"
+                class="button button-action"
+                (click)="create()"
+            >
+                Create
+            </button>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+<div class="flex-container">
+    <div class="col-8 card">
+        <ul class="font-text users-list">
+            <li class="font-header">
+                <div class="users-list__user-item">
+                    <div class="user-name">{{ 'username' | uppercase }}</div>
+                    <div class="firstname">{{ 'first name' | uppercase }}</div>
+                    <div class="lastname">{{ 'last name' | uppercase }}</div>
+                    <div class="email">{{ 'email' | uppercase }}</div>
+                    <div class="type">{{ 'type' | uppercase }}</div>
+                </div>
+            </li>
+            <li
+                *ngFor="let user of users$ | async"
+                [class.selected]="user.id === selectedId"
+            >
+                <a (click)="select(user.id)">
+                    <div class="font-text users-list__user-item">
+                        <div class="user-name">{{ user.username }}</div>
+                        <div class="firstname">{{ user.first_name }}</div>
+                        <div class="lastname">{{ user.last_name }}</div>
+                        <div class="email">{{ user.email }}</div>
+                        <div class="type">
+                            {{ user.user_type == 1 ? 'Admin' : 'Driver' }}
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div
+        class="col-1 card"
+        [class.white-bg]="creatingOpened || editingOpened"
+    >
+        <app-create-user
+            *ngIf="creatingOpened"
+            (closeCreation)="createClose($event)"
+        ></app-create-user>
+        <app-update-user
+            *ngIf="editingOpened"
+            [userId]="selectedId"
+            (closeUpdate)="updateClose($event)"
+        ></app-update-user>
+    </div>
+
+</div>
