@@ -10,13 +10,13 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `npm install -g json-server`.
 
-Create `db.json` file inside this directory.
+Create `db.json` file inside this root directory (if it doesn't already exist).
 
 This file should have `users` array and `user_types` array.
 
 Also, `db.json` has already attached to root directory of repository.
 
-After creating `db.json` file, use `json-server --watch db.json` for starting JSON server
+Use `json-server --watch db.json` for starting JSON server (run in this root directory).
 
 ## Code scaffolding
 
